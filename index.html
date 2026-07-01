@@ -88,6 +88,26 @@
       width: 100%;
       display: block;
     }
+    .thumbs {
+      display: flex;
+      gap: 8px;
+      padding: 0 0 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .thumbs::-webkit-scrollbar { display: none; }
+    .thumb {
+      width: 62px; height: 62px;
+      border-radius: 8px;
+      border: 2px solid var(--border);
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+      background: var(--light);
+      transition: border-color .15s;
+    }
+    .thumb.active { border-color: var(--black); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
     .img-badges {
       position: absolute;
       top: 12px;
@@ -432,11 +452,19 @@
   <p class="hook-sub">Se você busca um tênis resistente, confortável e pronto pra qualquer desafio, o Force One é pra você.</p>
 
   <div class="img-wrap">
-    <img src="https://cdn.shopify.com/s/files/1/0888/0957/0338/files/300765451_720x_e5ffbc8d-9ef2-404b-8f32-ecd05400c690.webp?v=1781211972" alt="Tênis Force One" />
+    <img id="mainImg" src="imgs/img1.webp" alt="Tênis Force One" />
     <div class="img-badges">
       <span class="badge-off">-53% OFF</span>
       <span class="badge-hot">🔥 Mais vendido</span>
     </div>
+  </div>
+  <div class="thumbs">
+    <div class="thumb active" onclick="setImg(this,'imgs/img1.webp')"><img src="imgs/img1.webp" alt="" /></div>
+    <div class="thumb" onclick="setImg(this,'imgs/img2.webp')"><img src="imgs/img2.webp" alt="" /></div>
+    <div class="thumb" onclick="setImg(this,'imgs/img3.webp')"><img src="imgs/img3.webp" alt="" /></div>
+    <div class="thumb" onclick="setImg(this,'imgs/img4.webp')"><img src="imgs/img4.webp" alt="" /></div>
+    <div class="thumb" onclick="setImg(this,'imgs/img5.webp')"><img src="imgs/img5.webp" alt="" /></div>
+    <div class="thumb" onclick="setImg(this,'imgs/img6.webp')"><img src="imgs/img6.webp" alt="" /></div>
   </div>
 </div>
 
@@ -610,6 +638,12 @@ function goToStore() {
   }
   tick(); setInterval(tick, 1000);
 })();
+
+function setImg(el, src) {
+  document.getElementById('mainImg').src = src;
+  document.querySelectorAll('.thumb').forEach(function(t){ t.classList.remove('active'); });
+  el.classList.add('active');
+}
 
 document.querySelectorAll('.faq-q').forEach(function(b){
   b.addEventListener('click', function(){
