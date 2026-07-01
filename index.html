@@ -3,289 +3,475 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Force One — O Tênis Mais Resistente do Brasil</title>
-  <meta name="description" content="Resistência extrema, conforto todo dia. Garanta o seu Force One agora com frete grátis." />
+  <title>Tênis Force One — Oferta Exclusiva</title>
+  <meta name="description" content="O tênis mais resistente do Brasil. De R$ 199,90 por apenas R$ 139,90. Frete Grátis." />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root { --yellow: #FFCD11; --black: #0a0a0a; --dark: #111; --gray: #1a1a1a; --muted: #888; }
-    body { background: var(--black); color: #f0f0f0; font-family: 'Segoe UI', system-ui, sans-serif; overflow-x: hidden; }
-
-    /* ── ABOVE THE FOLD ── */
-    .fold {
-      min-height: 100dvh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto 1fr auto;
-      background: radial-gradient(ellipse at 60% 50%, #1a1200 0%, var(--black) 70%);
+    :root {
+      --yellow: #FFCD11;
+      --black: #000000;
+      --gray: #333333;
+      --light: #F5F5F5;
+      --muted: #666;
+      --red: #ef4444;
+    }
+    body {
+      background: var(--light);
+      color: var(--black);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+      padding-bottom: 80px;
     }
 
-    /* top bar */
-    .topbar {
-      grid-column: 1 / -1;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 32px; border-bottom: 1px solid #1a1a1a;
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--yellow);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
-    .logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 2px; color: var(--yellow); }
-    .topbar-badge { font-size: 0.75rem; color: #888; }
-    .topbar-badge strong { color: #4ade80; }
+    .site-logo {
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      color: var(--black);
+    }
+    .header-badge {
+      background: var(--black);
+      color: var(--yellow);
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.5px;
+    }
 
-    /* left col */
-    .left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 32px 48px 32px 48px; gap: 20px;
+    /* ── PROMO STRIP ── */
+    .promo-strip {
+      background: var(--black);
+      color: var(--yellow);
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 7px 12px;
     }
-    .pill {
-      display: inline-flex; align-items: center; gap-6px;
-      background: rgba(255,205,17,0.12); border: 1px solid rgba(255,205,17,0.3);
-      color: var(--yellow); font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px;
-      border-radius: 100px; width: fit-content;
-    }
-    h1 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: -1px; }
-    h1 em { font-style: normal; color: var(--yellow); }
-    .desc { font-size: 1rem; color: #aaa; line-height: 1.7; max-width: 420px; }
-    .price-row { display: flex; align-items: baseline; gap: 12px; }
-    .price-old { font-size: 0.9rem; color: #555; text-decoration: line-through; }
-    .price-new { font-size: 2.4rem; font-weight: 900; color: var(--yellow); }
-    .price-pix { font-size: 0.85rem; color: #4ade80; font-weight: 600; }
-    .cta {
-      display: inline-block; background: var(--yellow); color: var(--black);
-      font-size: 1.05rem; font-weight: 900; padding: 18px 36px; border-radius: 12px;
-      text-decoration: none; letter-spacing: 0.5px; width: fit-content;
-      box-shadow: 0 0 40px rgba(255,205,17,0.35); transition: transform .15s, box-shadow .15s;
-    }
-    .cta:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(255,205,17,0.5); }
-    .cta:active { transform: scale(.98); }
-    .badges { display: flex; gap: 16px; flex-wrap: wrap; }
-    .badge-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #666; }
-    .badge-item span { font-size: 1rem; }
 
-    /* right col */
-    .right {
-      display: flex; align-items: center; justify-content: center;
-      padding: 32px; position: relative;
+    /* ── PRODUCT IMAGE ── */
+    .img-wrap {
+      background: #fff;
+      border-bottom: 3px solid var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
     }
-    .right::before {
-      content: ''; position: absolute;
-      width: 400px; height: 400px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,205,17,0.12), transparent 70%);
-      pointer-events: none;
+    .img-wrap img {
+      width: 100%;
+      max-width: 340px;
+      display: block;
     }
-    .product-img {
-      width: 100%; max-width: 400px; position: relative; z-index: 1;
-      filter: drop-shadow(0 20px 60px rgba(255,205,17,0.2));
-      animation: float 3.5s ease-in-out infinite;
+
+    /* ── CONTENT ── */
+    .content {
+      background: #fff;
+      padding: 20px 16px;
     }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-
-    /* bottom bar */
-    .bottombar {
-      grid-column: 1 / -1;
-      display: flex; align-items: center; justify-content: center; gap: 32px;
-      padding: 14px 32px; background: rgba(255,205,17,0.06);
-      border-top: 1px solid rgba(255,205,17,0.1); flex-wrap: wrap;
+    .cat-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
     }
-    .stat { text-align: center; }
-    .stat strong { display: block; font-size: 1.2rem; font-weight: 900; color: var(--yellow); }
-    .stat span { font-size: 0.72rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
-
-    /* countdown */
-    .countdown-wrap {
-      background: #0f0800; border-bottom: 1px solid #1a1200;
-      padding: 12px 20px; text-align: center;
+    .product-name {
+      font-size: 1.55rem;
+      font-weight: 900;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 8px;
     }
-    .countdown-wrap p { font-size: 0.8rem; color: #888; margin-bottom: 8px; }
-    .cd { display: inline-flex; align-items: center; gap: 8px; }
-    .cd-block { text-align: center; }
-    .cd-num { display: block; background: var(--yellow); color: var(--black); font-size: 1.4rem; font-weight: 900; width: 48px; height: 48px; border-radius: 8px; line-height: 48px; }
-    .cd-lbl { font-size: 0.6rem; color: #555; text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; display: block; }
-    .cd-sep { font-size: 1.4rem; font-weight: 900; color: var(--yellow); margin-bottom: 16px; }
+    .stars-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .stars { color: var(--yellow); font-size: 0.95rem; }
+    .stars-count { font-size: 0.78rem; color: var(--muted); }
+    .price-box {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      border: 2px solid var(--yellow);
+    }
+    .price-old {
+      font-size: 0.88rem;
+      color: var(--muted);
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .price-current {
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--black);
+      line-height: 1;
+    }
+    .price-tag {
+      background: var(--red);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .price-note { font-size: 0.78rem; color: var(--muted); margin-top: 6px; }
 
-    /* sections below fold */
-    .section { padding: 64px 24px; max-width: 720px; margin: 0 auto; }
-    .section h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; margin-bottom: 28px; }
-    .section h2 em { font-style: normal; color: var(--yellow); }
+    .cta-btn {
+      display: block;
+      background: var(--yellow);
+      color: var(--black);
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 900;
+      padding: 17px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 16px rgba(255,205,17,0.5);
+      margin-bottom: 10px;
+    }
+    .cta-btn:active { opacity: 0.9; transform: scale(0.99); }
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 8px 0 4px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
 
-    .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
-    .card { background: var(--gray); border: 1px solid #222; border-radius: 16px; padding: 24px 20px; }
-    .card:hover { border-color: rgba(255,205,17,0.3); }
-    .card-icon { font-size: 1.8rem; margin-bottom: 10px; }
-    .card h3 { font-size: 0.95rem; font-weight: 800; margin-bottom: 6px; }
-    .card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    /* ── SECTION ── */
+    .section { padding: 20px 16px; background: #fff; }
+    .section + .section { border-top: 1px solid #eee; }
+    .section h2 {
+      font-size: 1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      color: var(--black);
+    }
+    .section h2 span { color: var(--yellow); background: var(--black); padding: 0 4px; border-radius: 3px; }
 
-    .review-list { display: flex; flex-direction: column; gap: 14px; }
-    .review { background: var(--gray); border-radius: 14px; padding: 20px; }
-    .review-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-    .av { width: 38px; height: 38px; border-radius: 50%; background: var(--yellow); color: var(--black); font-weight: 900; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-    .rv-name { font-weight: 700; font-size: 0.9rem; }
-    .rv-city { font-size: 0.72rem; color: var(--muted); }
-    .stars { color: var(--yellow); font-size: 0.8rem; margin-bottom: 6px; }
-    .rv-text { font-size: 0.85rem; color: #bbb; line-height: 1.7; }
+    /* ── BENEFITS ── */
+    .benefit-list { display: flex; flex-direction: column; gap: 10px; }
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--light);
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .benefit-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--yellow);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .benefit h3 { font-size: 0.85rem; font-weight: 800; margin-bottom: 2px; }
+    .benefit p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
 
-    .faq-list { display: flex; flex-direction: column; gap: 10px; }
-    .faq { background: var(--gray); border-radius: 12px; overflow: hidden; }
-    .faq-q { width: 100%; text-align: left; background: none; border: none; color: #f0f0f0; font-size: 0.9rem; font-weight: 700; padding: 16px 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-    .faq-q:hover { color: var(--yellow); }
-    .faq-a { padding: 0 18px 16px; font-size: 0.82rem; color: var(--muted); line-height: 1.7; display: none; }
+    /* ── REVIEWS ── */
+    .review-list { display: flex; flex-direction: column; gap: 12px; }
+    .review {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .review-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .av {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--yellow);
+      font-weight: 900;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .rv-name { font-size: 0.82rem; font-weight: 800; }
+    .rv-city { font-size: 0.7rem; color: var(--muted); }
+    .rv-stars { color: var(--yellow); font-size: 0.75rem; margin-bottom: 6px; }
+    .rv-text { font-size: 0.8rem; color: var(--gray); line-height: 1.55; }
+
+    /* ── FAQ ── */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    .faq { background: var(--light); border-radius: 10px; overflow: hidden; }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none;
+      font-size: 0.85rem; font-weight: 800; padding: 14px 14px;
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      color: var(--black);
+    }
+    .faq-a {
+      padding: 0 14px 12px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+      display: none;
+    }
     .faq.open .faq-a { display: block; }
-    .faq.open .faq-q { color: var(--yellow); }
-    .arrow { transition: transform .2s; }
-    .faq.open .arrow { transform: rotate(180deg); }
+    .faq.open .faq-q { border-bottom: 1px solid #e5e5e5; }
+    .faq-arrow { transition: transform .2s; font-size: 0.7rem; color: var(--muted); }
+    .faq.open .faq-arrow { transform: rotate(180deg); }
 
-    .final { text-align: center; padding: 80px 24px 120px; background: linear-gradient(180deg, var(--black) 0%, #0f0800 50%, var(--black) 100%); }
-    .final h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; margin-bottom: 14px; }
-    .final p { font-size: 0.95rem; color: #aaa; max-width: 440px; margin: 0 auto 28px; line-height: 1.6; }
+    /* ── COUNTDOWN ── */
+    .countdown-section {
+      background: var(--black);
+      padding: 18px 16px;
+    }
+    .countdown-section p { font-size: 0.75rem; color: #888; margin-bottom: 10px; text-align: center; }
+    .cd { display: flex; align-items: center; gap: 8px; justify-content: center; }
+    .cd-block { text-align: center; }
+    .cd-num {
+      display: block;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 1.4rem;
+      font-weight: 900;
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      line-height: 46px;
+    }
+    .cd-lbl { font-size: 0.58rem; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; display: block; }
+    .cd-sep { font-size: 1.3rem; font-weight: 900; color: var(--yellow); margin-bottom: 16px; }
 
-    .sticky { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: var(--black); border-top: 2px solid var(--yellow); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .sticky p { font-size: 0.78rem; color: #888; }
-    .sticky strong { color: var(--yellow); }
-    .sticky a { background: var(--yellow); color: var(--black); font-weight: 900; font-size: 0.88rem; padding: 11px 22px; border-radius: 8px; text-decoration: none; white-space: nowrap; }
+    /* ── STICKY CTA ── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 2px solid var(--yellow);
+      padding: 10px 16px;
+      z-index: 100;
+    }
+    .sticky-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .sticky-price-row span { font-size: 0.72rem; color: var(--muted); }
+    .sticky-price-row strong { font-size: 1.05rem; font-weight: 900; }
+    .sticky-cta a {
+      display: block;
+      background: var(--yellow);
+      color: var(--black);
+      text-align: center;
+      font-weight: 900;
+      font-size: 0.92rem;
+      padding: 13px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
 
-    footer { background: #050505; border-top: 1px solid #111; padding: 20px; text-align: center; }
-    footer p { font-size: 0.7rem; color: #333; }
-
-    @media (max-width: 700px) {
-      .fold { grid-template-columns: 1fr; }
-      .right { display: none; }
-      .left { padding: 28px 20px; }
-      h1 { font-size: 2.2rem; }
-      .topbar { padding: 12px 20px; }
-      .bottombar { gap: 20px; padding: 12px 16px; }
-      .sticky { flex-direction: column; }
-      .sticky a { width: 100%; text-align: center; }
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      color: #444;
+      text-align: center;
+      font-size: 0.65rem;
+      padding: 16px;
     }
   </style>
 </head>
 <body>
 
-<!-- ABOVE THE FOLD -->
-<div class="fold">
-  <div class="topbar">
-    <span class="logo">FORCE ONE</span>
-    <span class="topbar-badge">⚡ Promoção ativa · <strong>Frete Grátis</strong></span>
+<header class="site-header">
+  <span class="site-logo">CAT STORE</span>
+  <span class="header-badge">OFERTA LIMITADA</span>
+</header>
+
+<div class="promo-strip">
+  ⚡ Frete Grátis para todo o Brasil &nbsp;·&nbsp; Envio em até 2 dias úteis
+</div>
+
+<div class="img-wrap">
+  <img src="https://cdn.shopify.com/s/files/1/0888/0957/0338/files/300765451_720x_e5ffbc8d-9ef2-404b-8f32-ecd05400c690.webp?v=1781211972" alt="Tênis Force One" />
+</div>
+
+<div class="content">
+  <span class="cat-badge">TÊNIS FORCE ONE</span>
+  <h1 class="product-name">Tênis Force One<br />Resistência Extrema</h1>
+  <div class="stars-row">
+    <span class="stars">★★★★★</span>
+    <span class="stars-count">4,9 · 2.400+ avaliações</span>
   </div>
 
-  <div class="left">
-    <span class="pill">⚡ Oferta por tempo limitado</span>
-    <h1>O Tênis que<br/><em>Não Quebra.</em><br/>Nunca.</h1>
-    <p class="desc">Feito para quem trabalha duro, anda muito e não tem tempo pra dor nos pés. Resistência extrema. Conforto o dia inteiro.</p>
+  <div class="price-box">
+    <div class="price-old">De R$ 199,90</div>
     <div class="price-row">
-      <span class="price-old">R$ 259,90</span>
-      <span class="price-new">R$ 139,90</span>
+      <span class="price-current">R$ 139,90</span>
+      <span class="price-tag">30% OFF</span>
     </div>
-    <p class="price-pix">💚 No PIX: R$ 132,90 — 5% de desconto</p>
-    <a class="cta" href="https://lojalegado.com/produtos/tenis-force-one" target="_blank" rel="noopener">
-      QUERO MEU FORCE ONE →
-    </a>
-    <div class="badges">
-      <span class="badge-item"><span>🚚</span> Frete Grátis</span>
-      <span class="badge-item"><span>🔒</span> Pagamento Seguro</span>
-      <span class="badge-item"><span>🔄</span> 7 dias de garantia</span>
-    </div>
+    <p class="price-note">Parcelamento disponível · PIX aprovado na hora</p>
   </div>
 
-  <div class="right">
-    <img class="product-img" src="https://cdn.shopify.com/s/files/1/0888/0957/0338/files/300765451_720x_e5ffbc8d-9ef2-404b-8f32-ecd05400c690.webp?v=1781211972" alt="Tênis Force One" />
-  </div>
+  <a class="cta-btn" href="https://www.loja-caterpillar.com/produtos/tenis-force-one" target="_blank" rel="noopener">
+    COMPRAR AGORA — FRETE GRÁTIS
+  </a>
 
-  <div class="bottombar">
-    <div class="stat"><strong>+2.400</strong><span>clientes satisfeitos</span></div>
-    <div class="stat"><strong>4.9★</strong><span>avaliação média</span></div>
-    <div class="stat"><strong>2 dias</strong><span>para envio</span></div>
-    <div class="stat"><strong>7 dias</strong><span>devolução grátis</span></div>
+  <div class="trust-row">
+    <span class="trust-item">🔒 Pagamento Seguro</span>
+    <span class="trust-item">🔄 7 dias garantia</span>
+    <span class="trust-item">📦 Rastreio incluso</span>
   </div>
 </div>
 
-<!-- COUNTDOWN -->
-<div class="countdown-wrap">
+<div class="countdown-section">
   <p>⚠️ Promoção encerra em:</p>
   <div class="cd">
-    <div class="cd-block"><span class="cd-num" id="h">00</span><span class="cd-lbl">horas</span></div>
+    <div class="cd-block"><span class="cd-num" id="h">05</span><span class="cd-lbl">horas</span></div>
     <span class="cd-sep">:</span>
-    <div class="cd-block"><span class="cd-num" id="m">00</span><span class="cd-lbl">min</span></div>
+    <div class="cd-block"><span class="cd-num" id="m">47</span><span class="cd-lbl">min</span></div>
     <span class="cd-sep">:</span>
     <div class="cd-block"><span class="cd-num" id="s">00</span><span class="cd-lbl">seg</span></div>
   </div>
 </div>
 
-<!-- BENEFITS -->
-<div style="background:var(--dark);">
-  <div class="section">
-    <h2>Por que o <em>Force One</em> é diferente?</h2>
-    <div class="grid3">
-      <div class="card"><div class="card-icon">🔨</div><h3>Construção Reforçada</h3><p>Solado antiderrapante e materiais de alta resistência que aguentam o trabalho mais pesado.</p></div>
-      <div class="card"><div class="card-icon">☁️</div><h3>Palmilha Premium</h3><p>Amortecimento de alta densidade que elimina a dor nos pés mesmo após 12 horas em pé.</p></div>
-      <div class="card"><div class="card-icon">💧</div><h3>Resistente à Água</h3><p>Material impermeável que mantém seus pés secos na chuva, na lama e em qualquer situação.</p></div>
-      <div class="card"><div class="card-icon">🎯</div><h3>Design Versátil</h3><p>Visual que combina com trabalho, academia e saída casual. Um tênis, mil situações.</p></div>
-      <div class="card"><div class="card-icon">⚡</div><h3>Durabilidade Real</h3><p>Não descola, não rasga e não perde a forma. Dura anos de uso diário intenso.</p></div>
-      <div class="card"><div class="card-icon">📦</div><h3>Entrega Rápida</h3><p>Enviado em até 2 dias úteis. Rastreio em tempo real direto no celular.</p></div>
+<div class="section">
+  <h2>Por que o <span>Force One?</span></h2>
+  <div class="benefit-list">
+    <div class="benefit">
+      <div class="benefit-icon">🔨</div>
+      <div><h3>Construção Ultra Reforçada</h3><p>Solado antiderrapante e materiais de alta resistência para os trabalhos mais pesados.</p></div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">☁️</div>
+      <div><h3>Palmilha Premium</h3><p>Amortecimento que elimina a dor nos pés mesmo depois de 12 horas em pé.</p></div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">💧</div>
+      <div><h3>Resistente à Água</h3><p>Material impermeável. Chuva, lama, umidade — pé sempre seco.</p></div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">⚡</div>
+      <div><h3>Durabilidade Real</h3><p>Não descola, não rasga. Dura anos de uso diário intenso.</p></div>
     </div>
   </div>
 </div>
 
-<!-- REVIEWS -->
 <div class="section">
-  <h2>O que dizem quem <em>já tem</em></h2>
+  <h2>O que dizem os <span>clientes</span></h2>
   <div class="review-list">
     <div class="review">
-      <div class="review-top"><div class="av">M</div><div><div class="rv-name">Marcos Oliveira</div><div class="rv-city">São Paulo, SP</div></div></div>
-      <div class="stars">★★★★★</div>
-      <p class="rv-text">"Trabalho em obra e já testei vários. O Force One é outro nível. Chego em casa sem dor nos pés depois de 10 horas. Já pedi mais um par."</p>
+      <div class="review-top"><div class="av">M</div><div><div class="rv-name">Marcos Oliveira</div><div class="rv-city">São Paulo, SP · Compra verificada</div></div></div>
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Trabalho em obra e já testei vários tênis. O Force One é outro nível. Chego em casa sem dor nenhuma depois de 10 horas."</p>
     </div>
     <div class="review">
-      <div class="review-top"><div class="av">R</div><div><div class="rv-name">Rafael Costa</div><div class="rv-city">Recife, PE</div></div></div>
-      <div class="stars">★★★★★</div>
-      <p class="rv-text">"Recebi em 4 dias. O tênis é pesado no visual mas leve nos pés. Qualidade absurda pelo preço que paguei."</p>
+      <div class="review-top"><div class="av">R</div><div><div class="rv-name">Rafael Costa</div><div class="rv-city">Recife, PE · Compra verificada</div></div></div>
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Recebi em 4 dias. O tênis é pesado no visual mas leve nos pés. Qualidade absurda pelo preço."</p>
     </div>
     <div class="review">
-      <div class="review-top"><div class="av">L</div><div><div class="rv-name">Luciana Ferreira</div><div class="rv-city">Belo Horizonte, MG</div></div></div>
-      <div class="stars">★★★★★</div>
-      <p class="rv-text">"Comprei pro meu marido que fica de pé o dia todo. Ele disse que é o melhor tênis que já usou. Vou comprar de novo."</p>
-    </div>
-    <div class="review">
-      <div class="review-top"><div class="av">A</div><div><div class="rv-name">Anderson Lima</div><div class="rv-city">Manaus, AM</div></div></div>
-      <div class="stars">★★★★★</div>
-      <p class="rv-text">"Aqui chuva é toda hora. Testei na lama e o pé ficou completamente seco. Material de alta qualidade mesmo."</p>
+      <div class="review-top"><div class="av">A</div><div><div class="rv-name">Anderson Lima</div><div class="rv-city">Manaus, AM · Compra verificada</div></div></div>
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Aqui chove muito. Testei na lama e o pé ficou completamente seco. Material de verdade."</p>
     </div>
   </div>
 </div>
 
-<!-- FAQ -->
-<div style="background:var(--dark);">
-  <div class="section">
-    <h2>Dúvidas <em>Frequentes</em></h2>
-    <div class="faq-list">
-      <div class="faq"><button class="faq-q">Como sei qual tamanho pedir? <span class="arrow">▾</span></button><div class="faq-a">Segue o tamanho padrão brasileiro. Se usa 41 normalmente, peça 41. Em caso de dúvida entre dois tamanhos, recomendamos o maior.</div></div>
-      <div class="faq"><button class="faq-q">Quanto tempo leva para chegar? <span class="arrow">▾</span></button><div class="faq-a">Enviamos em até 2 dias úteis. Sul e Sudeste: 3 a 7 dias. Outras regiões: 5 a 12 dias. Você recebe o rastreio por e-mail.</div></div>
-      <div class="faq"><button class="faq-q">E se eu não gostar? <span class="arrow">▾</span></button><div class="faq-a">7 dias a partir do recebimento para devolver sem justificativa e receber 100% do valor de volta.</div></div>
-      <div class="faq"><button class="faq-q">O pagamento é seguro? <span class="arrow">▾</span></button><div class="faq-a">Sim. Processado pelo Mercado Pago, maior plataforma da América Latina. Dados 100% criptografados.</div></div>
-      <div class="faq"><button class="faq-q">Tem desconto no PIX? <span class="arrow">▾</span></button><div class="faq-a">Sim! 5% de desconto pagando no PIX. Aprovação imediata e pedido entra em produção na hora.</div></div>
+<div class="section">
+  <h2>Dúvidas <span>Frequentes</span></h2>
+  <div class="faq-list">
+    <div class="faq">
+      <button class="faq-q">Como escolho o tamanho? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">Segue o seu tamanho padrão. Em caso de dúvida entre dois números, escolha o maior.</div>
+    </div>
+    <div class="faq">
+      <button class="faq-q">Quanto tempo para chegar? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">Enviamos em até 2 dias úteis. Sul/Sudeste: 3 a 7 dias. Outras regiões: 5 a 12 dias. Rastreio por e-mail.</div>
+    </div>
+    <div class="faq">
+      <button class="faq-q">E se eu não gostar? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">7 dias para devolver sem justificativa e receber 100% do valor de volta.</div>
+    </div>
+    <div class="faq">
+      <button class="faq-q">O pagamento é seguro? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">Sim. Processado pelo Mercado Pago, criptografado e 100% seguro.</div>
     </div>
   </div>
 </div>
 
-<!-- FINAL CTA -->
-<div class="final">
-  <h2>Não espere mais.<br/><em style="color:var(--yellow)">Garanta o seu agora.</em></h2>
-  <p>Cada dia com um tênis ruim é mais dor, mais gasto e mais frustração. O Force One resolve isso de vez.</p>
-  <a class="cta" href="https://lojalegado.com/produtos/tenis-force-one" target="_blank" rel="noopener">
-    COMPRAR AGORA — FRETE GRÁTIS →
+<div style="background:var(--black);padding:24px 16px;text-align:center;">
+  <p style="color:#888;font-size:0.75rem;margin-bottom:10px;">Oferta por tempo limitado</p>
+  <div style="font-size:0.85rem;color:#555;text-decoration:line-through;margin-bottom:4px;">De R$ 199,90</div>
+  <div style="font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:16px;">R$ 139,90</div>
+  <a href="https://www.loja-caterpillar.com/produtos/tenis-force-one" target="_blank" rel="noopener"
+    style="display:block;background:var(--yellow);color:var(--black);font-weight:900;font-size:1rem;padding:17px;border-radius:10px;text-decoration:none;">
+    GARANTIR MEU FORCE ONE →
   </a>
-  <p style="margin-top:14px;font-size:0.75rem;color:#444;">🚚 Frete grátis · 🔒 Pagamento seguro · 🔄 7 dias de garantia</p>
+  <p style="color:#444;font-size:0.68rem;margin-top:12px;">🚚 Frete Grátis · 🔒 Pagamento Seguro · 🔄 7 dias garantia</p>
 </div>
 
 <footer>
-  <p>© 2026 Force One. Todos os direitos reservados. Este site não possui vínculo com nenhuma marca registrada.</p>
+  <p>© 2026 CAT Store. Todos os direitos reservados.</p>
 </footer>
 
-<div class="sticky">
-  <p>⚡ Force One — <strong>R$ 139,90</strong> · Frete Grátis</p>
-  <a href="https://lojalegado.com/produtos/tenis-force-one" target="_blank" rel="noopener">COMPRAR AGORA</a>
+<div class="sticky-cta">
+  <div class="sticky-price-row">
+    <span>Force One — <s>R$ 199,90</s></span>
+    <strong>R$ 139,90</strong>
+  </div>
+  <a href="https://www.loja-caterpillar.com/produtos/tenis-force-one" target="_blank" rel="noopener">
+    COMPRAR AGORA — FRETE GRÁTIS
+  </a>
 </div>
 
 <script>
 (function(){
-  var end = Date.now() + 6*3600*1000;
+  var end = Date.now() + 5*3600*1000 + 47*60*1000;
   function tick(){
     var d = Math.max(0, end - Date.now());
     var h = Math.floor(d/3600000), m = Math.floor((d%3600000)/60000), s = Math.floor((d%60000)/1000);
