@@ -528,21 +528,6 @@
   </div>
 </div>
 
-<div class="urgency">
-  <div>
-    <div class="cd">
-      <div class="cd-block"><span class="cd-num" id="h">05</span><span class="cd-lbl">h</span></div>
-      <span class="cd-sep">:</span>
-      <div class="cd-block"><span class="cd-num" id="m">47</span><span class="cd-lbl">m</span></div>
-      <span class="cd-sep">:</span>
-      <div class="cd-block"><span class="cd-num" id="s">00</span><span class="cd-lbl">s</span></div>
-    </div>
-  </div>
-  <div class="urgency-text">
-    <strong>⚠️ Promoção por tempo limitado</strong>
-    <span>Apenas 8 unidades restantes neste preço</span>
-  </div>
-</div>
 
 <div class="proof-section">
   <div class="proof-header">
@@ -554,22 +539,22 @@
   </div>
   <div class="review-list">
     <div class="review">
-      <div class="review-top"><div class="av">M</div><div><div class="rv-name">Marcos Oliveira <span class="rv-verified">✓ verificado</span></div><div class="rv-city">São Paulo, SP</div></div></div>
+      <div class="review-top"><div><div class="rv-name">Marcos Oliveira <span class="rv-verified">✓ verificado</span></div><div class="rv-city">São Paulo, SP</div></div></div>
       <div class="rv-stars">★★★★★</div>
       <p class="rv-text">"Trabalho em obra e já testei vários tênis. O Force One é outro nível. Chego em casa sem dor nenhuma depois de 10 horas no pé. A palmilha faz toda a diferença."</p>
     </div>
     <div class="review">
-      <div class="review-top"><div class="av">R</div><div><div class="rv-name">Rafael Costa <span class="rv-verified">✓ verificado</span></div><div class="rv-city">Recife, PE</div></div></div>
+      <div class="review-top"><div><div class="rv-name">Rafael Costa <span class="rv-verified">✓ verificado</span></div><div class="rv-city">Recife, PE</div></div></div>
       <div class="rv-stars">★★★★★</div>
       <p class="rv-text">"Recebi em 4 dias. O solado é incrível, não escorregou em nenhum momento. Qualidade absurda pelo preço que paguei."</p>
     </div>
     <div class="review">
-      <div class="review-top"><div class="av">A</div><div><div class="rv-name">Anderson Lima <span class="rv-verified">✓ verificado</span></div><div class="rv-city">Manaus, AM</div></div></div>
+      <div class="review-top"><div><div class="rv-name">Anderson Lima <span class="rv-verified">✓ verificado</span></div><div class="rv-city">Manaus, AM</div></div></div>
       <div class="rv-stars">★★★★★</div>
       <p class="rv-text">"Aqui chove todo dia. Testei na lama e o pé ficou completamente seco. A biqueira salvou meu pé de um tombo feio. Vale muito a pena."</p>
     </div>
     <div class="review">
-      <div class="review-top"><div class="av">C</div><div><div class="rv-name">Carlos Eduardo <span class="rv-verified">✓ verificado</span></div><div class="rv-city">Goiânia, GO</div></div></div>
+      <div class="review-top"><div><div class="rv-name">Carlos Eduardo <span class="rv-verified">✓ verificado</span></div><div class="rv-city">Goiânia, GO</div></div></div>
       <div class="rv-stars">★★★★★</div>
       <p class="rv-text">"Comprei desconfiado pelo preço baixo, mas o tênis chegou impecável. Costura firme, solado robusto. Já indiquei pra minha equipe toda."</p>
     </div>
@@ -624,17 +609,6 @@ function goToStore() {
   window.open(parts.join(''), '_blank', 'noopener');
 }
 
-(function(){
-  var end = Date.now() + 5*3600*1000 + 47*60*1000;
-  function tick(){
-    var d = Math.max(0, end - Date.now());
-    var h = Math.floor(d/3600000), m = Math.floor((d%3600000)/60000), s = Math.floor((d%60000)/1000);
-    document.getElementById('h').textContent = String(h).padStart(2,'0');
-    document.getElementById('m').textContent = String(m).padStart(2,'0');
-    document.getElementById('s').textContent = String(s).padStart(2,'0');
-  }
-  tick(); setInterval(tick, 1000);
-})();
 
 function setImg(el, src) {
   document.getElementById('mainImg').src = src;
