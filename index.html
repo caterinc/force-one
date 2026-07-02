@@ -17,7 +17,7 @@
       --light: #F7F7F7;
       --border: #e8e8e8;
       --muted: #888;
-      --green: #15803d;
+      --green: #16c789;
       --red: #dc2626;
     }
     body {
@@ -48,15 +48,15 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #fff3cd;
-      border: 1px solid #fbbf24;
-      color: #92400e;
+      background: transparent;
+      border: none;
+      color: var(--black);
       font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1px;
-      padding: 5px 12px;
-      border-radius: 100px;
+      padding: 0;
+      border-radius: 0;
       margin-bottom: 14px;
     }
     .hook-title {
@@ -128,11 +128,11 @@
       border-radius: 6px;
     }
     .badge-hot {
-      background: var(--black);
+      background: transparent;
       color: var(--yellow);
       font-size: 0.68rem;
       font-weight: 800;
-      padding: 4px 10px;
+      padding: 4px 0px;
       border-radius: 6px;
     }
 
@@ -278,7 +278,7 @@
     .cta-btn {
       display: block;
       width: 100%;
-      background: #16a34a;
+      background: #16c789;
       color: #ffffff;
       text-align: center;
       font-size: 1.05rem;
@@ -289,7 +289,7 @@
       cursor: pointer;
       letter-spacing: 0.3px;
       font-family: inherit;
-      box-shadow: 0 4px 20px rgba(22,163,74,0.35);
+      box-shadow: none;
       margin-bottom: 10px;
     }
     .cta-btn:active { opacity: 0.9; transform: scale(0.99); }
@@ -431,7 +431,7 @@
     .sticky-price .old { font-size: 0.68rem; color: var(--muted); text-decoration: line-through; }
     .sticky-price .cur { font-size: 1.15rem; font-weight: 900; }
     .sticky-btn {
-      background: #16a34a;
+      background: #16c789;
       color: #ffffff;
       font-weight: 900;
       font-size: 0.88rem;
