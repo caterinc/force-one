@@ -1,41 +1,647 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Force One</title>
+  <title>Tênis Force One — Resistência e Conforto em Cada Passo</title>
+  <meta name="description" content="O tênis que vai além do básico. Construção reforçada, palmilha ortopédica e solado tratorado. Frete grátis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script defer src="/_vercel/insights/script.js"></script>
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init','1821164748580849');
     fbq('track','PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1821164748580849&ev=PageView&noscript=1"/></noscript>
+  <script>if(window.fbq)fbq('init','1821164748580849',{},{"agent":"forces-one.com"});</script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #f5f5f5; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-    .loader { width: 36px; height: 36px; border: 3px solid #e5e7eb; border-top-color: #16c789; border-radius: 50%; animation: spin 0.7s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    :root {
+      --yellow: #FFCD11;
+      --black: #0a0a0a;
+      --gray: #444;
+      --light: #F7F7F7;
+      --border: #e8e8e8;
+      --muted: #888;
+      --green: #16c789;
+      --red: #dc2626;
+    }
+    body {
+      background: var(--light);
+      color: var(--black);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      padding-bottom: 90px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ANNOUNCE */
+    .announce {
+      background: var(--yellow);
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--black);
+      padding: 10px 16px;
+      letter-spacing: 0.3px;
+    }
+
+    /* HERO HOOK */
+    .hero {
+      background: #fff;
+      padding: 24px 20px 0;
+    }
+    .hook-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: none;
+      color: var(--black);
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0;
+      border-radius: 0;
+      margin-bottom: 14px;
+    }
+    .hook-title {
+      font-size: 1.55rem;
+      font-weight: 900;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+    .hook-title em {
+      font-style: normal;
+      text-decoration: underline;
+      text-decoration-color: var(--yellow);
+      text-underline-offset: 4px;
+    }
+    .hook-sub {
+      font-size: 0.92rem;
+      color: var(--gray);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    /* PRODUCT IMAGE */
+    .img-wrap {
+      position: relative;
+      background: var(--light);
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 0 0 0;
+    }
+    .img-wrap img {
+      width: 100%;
+      display: block;
+    }
+    .thumbs {
+      display: flex;
+      gap: 8px;
+      padding: 0 0 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .thumbs::-webkit-scrollbar { display: none; }
+    .thumb {
+      width: 62px; height: 62px;
+      border-radius: 8px;
+      border: 2px solid var(--border);
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+      background: var(--light);
+      transition: border-color .15s;
+    }
+    .thumb.active { border-color: var(--black); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .img-badges {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .badge-off {
+      background: var(--red);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .badge-hot {
+      background: transparent;
+      color: var(--yellow);
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 4px 0px;
+      border-radius: 6px;
+    }
+
+    /* STARS */
+    .stars-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 20px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+    }
+    .stars { color: var(--yellow); font-size: 1rem; letter-spacing: 1px; }
+    .stars-info { font-size: 0.78rem; color: var(--muted); }
+    .stars-info strong { color: var(--black); }
+
+    /* COPY SECTION */
+    .copy-section {
+      background: #fff;
+      padding: 22px 20px;
+      margin-top: 8px;
+    }
+    .copy-lead {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--yellow);
+      padding-left: 14px;
+    }
+    .copy-body {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .copy-close {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.55;
+    }
+
+    /* BENEFITS */
+    .benefits {
+      background: #fff;
+      padding: 22px 20px;
+      margin-top: 8px;
+    }
+    .benefits-title {
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .benefit-card {
+      background: var(--light);
+      border-radius: 12px;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .benefit-icon { font-size: 1.4rem; }
+    .benefit-name {
+      font-size: 0.78rem;
+      font-weight: 900;
+      color: var(--black);
+      line-height: 1.3;
+    }
+    .benefit-desc {
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* PRICE + CTA */
+    .price-cta {
+      background: #fff;
+      padding: 22px 20px;
+      margin-top: 8px;
+    }
+    .price-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .price-old {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .price-val {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--black);
+      line-height: 1;
+    }
+    .price-badge {
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .price-installment {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .shipping-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+    }
+    .shipping-row p { font-size: 0.78rem; color: var(--green); font-weight: 700; }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: #FFCD11;
+      color: #000000;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 900;
+      padding: 17px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      font-family: inherit;
+      box-shadow: none;
+      margin-bottom: 10px;
+    }
+    .cta-btn:active { opacity: 0.9; transform: scale(0.99); }
+    .cta-sub {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* URGENCY */
+    .urgency {
+      background: #fff;
+      padding: 14px 20px;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cd {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .cd-block { text-align: center; }
+    .cd-num {
+      display: block;
+      background: var(--black);
+      color: var(--yellow);
+      font-size: 1rem;
+      font-weight: 900;
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      line-height: 36px;
+    }
+    .cd-lbl { font-size: 0.5rem; color: var(--muted); text-transform: uppercase; display: block; margin-top: 2px; }
+    .cd-sep { font-size: 0.9rem; font-weight: 900; color: var(--muted); margin-bottom: 12px; }
+    .urgency-text { flex: 1; min-width: 0; }
+    .urgency-text strong { font-size: 0.82rem; color: var(--black); display: block; margin-bottom: 2px; }
+    .urgency-text span { font-size: 0.72rem; color: var(--muted); }
+
+    /* SOCIAL PROOF */
+    .proof-section {
+      background: #fff;
+      padding: 22px 20px;
+      margin-top: 8px;
+    }
+    .proof-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .proof-title {
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+    }
+    .proof-score {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .proof-score .stars { font-size: 0.8rem; }
+    .proof-score span { font-size: 0.75rem; font-weight: 800; }
+
+    .review-list { display: flex; flex-direction: column; gap: 0; }
+    .review { padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .review:last-child { border-bottom: none; }
+    .review-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .av {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--black); color: var(--yellow);
+      font-weight: 900; font-size: 0.82rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .rv-name { font-size: 0.82rem; font-weight: 800; }
+    .rv-city { font-size: 0.68rem; color: var(--muted); }
+    .rv-stars { color: var(--yellow); font-size: 0.72rem; margin-bottom: 5px; }
+    .rv-verified { font-size: 0.62rem; color: var(--green); font-weight: 700; margin-left: 4px; }
+    .rv-text { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
+
+    /* FAQ */
+    .faq-section { background: #fff; padding: 22px 20px; margin-top: 8px; }
+    .faq-title {
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq { border-bottom: 1px solid var(--border); }
+    .faq:first-child { border-top: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none;
+      font-size: 0.85rem; font-weight: 700; padding: 14px 0;
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      color: var(--black); gap: 8px; font-family: inherit;
+    }
+    .faq-a { padding: 0 0 14px; font-size: 0.8rem; color: var(--muted); line-height: 1.65; display: none; }
+    .faq.open .faq-a { display: block; }
+    .faq-arrow { transition: transform .2s; font-size: 0.65rem; color: var(--muted); flex-shrink: 0; }
+    .faq.open .faq-arrow { transform: rotate(180deg); }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: #fff;
+      padding: 28px 20px 24px;
+      margin-top: 8px;
+      text-align: center;
+    }
+    .final-cta p { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; line-height: 1.6; }
+
+    footer {
+      background: var(--light);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 14px;
+      font-size: 0.63rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* STICKY */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      padding: 10px 16px 14px;
+      z-index: 100;
+    }
+    .sticky-inner { display: flex; align-items: center; gap: 12px; }
+    .sticky-price { flex: 1; min-width: 0; }
+    .sticky-price .old { font-size: 0.68rem; color: var(--muted); text-decoration: line-through; }
+    .sticky-price .cur { font-size: 1.15rem; font-weight: 900; }
+    .sticky-btn {
+      background: #FFCD11;
+      color: #000000;
+      font-weight: 900;
+      font-size: 0.88rem;
+      padding: 13px 22px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-family: inherit;
+    }
   </style>
 </head>
 <body>
-  <div class="loader"></div>
-  <script>
-    var sp = new URLSearchParams(window.location.search);
-    var fbclid = sp.get('fbclid');
-    var fbp = '';
-    try {
-      document.cookie.split(';').forEach(function(c) {
-        if (c.trim().startsWith('_fbp=')) fbp = c.trim().substring(5);
-      });
-    } catch(e) {}
-    var dest = [atob('aHR0cHM6Ly93d3cu'),atob('bG9qYS1jYXRlcnBpbGxhci5jb20='),atob('L3Byb2R1dG9zL3RlbmlzLWZvcmNlLW9uZQ==')].join('');
-    var qs = new URLSearchParams();
-    if (fbclid) qs.set('fbclid', fbclid);
-    if (fbp) qs.set('fbp', fbp);
-    var q = qs.toString();
-    setTimeout(function() {
-      window.location.replace(dest + (q ? '?' + q : ''));
-    }, 300);
-  </script>
+
+
+<div class="hero">
+  <div class="hook-tag">⚡ Oferta por tempo limitado</div>
+  <h1 class="hook-title">O tênis que vai além do básico. <em>Feito pra quem não para.</em></h1>
+  <p class="hook-sub">Se você busca um tênis resistente, confortável e pronto pra qualquer desafio, o Force One é pra você.</p>
+
+  <div class="img-wrap">
+    <img id="mainImg" src="imgs/img1.webp" alt="Tênis Force One" />
+    <div class="img-badges">
+      <span class="badge-hot">🔥 Mais vendido</span>
+    </div>
+  </div>
+  <div class="thumbs">
+    <div class="thumb active" onclick="setImg(this,'imgs/img1.webp')"><img src="imgs/img1.webp" alt="" /></div>
+    <div class="thumb" onclick="setImg(this,'imgs/img-cinza.webp')"><img src="imgs/img-cinza.webp" alt="" /></div>
+    <div class="thumb" onclick="setImg(this,'imgs/img5.webp')"><img src="imgs/img5.webp" alt="" /></div>
+    <div class="thumb" onclick="setImg(this,'imgs/img-intruder-mecha.jpg')"><img src="imgs/img-intruder-mecha.jpg" alt="" /></div>
+  </div>
+</div>
+
+<div class="stars-bar">
+  <span class="stars">★★★★★</span>
+  <p class="stars-info"><strong>4,9</strong> · mais de 2.400 clientes satisfeitos</p>
+</div>
+
+<div style="background:#fff;padding:0 20px 20px;">
+  <div style="border-top:1px solid var(--border);padding-top:16px;">
+    <p style="font-size:0.82rem;color:var(--muted);text-decoration:line-through;margin-bottom:2px;">De R$ 299,90</p>
+    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px;">
+      <span style="font-size:2rem;font-weight:900;line-height:1;">R$ 139,90</span>
+      <span style="background:var(--yellow);color:var(--black);font-size:0.7rem;font-weight:900;padding:3px 9px;border-radius:5px;">53% OFF</span>
+    </div>
+    <p style="font-size:0.78rem;color:var(--green);font-weight:700;margin-bottom:4px;">à vista no PIX</p>
+    <p style="font-size:0.75rem;color:var(--muted);margin-bottom:16px;">ou 12x de R$ 13,87 no cartão sem juros</p>
+    <p style="font-size:0.72rem;color:var(--muted);text-align:center;margin-bottom:10px;">🏪 Vendido e entregue pela <strong style="color:var(--black);">loja oficial</strong></p>
+    <button class="cta-btn" onclick="goToStore()">🛒 Comprar na loja oficial →</button>
+    <p style="text-align:center;font-size:0.68rem;color:var(--muted);margin-top:8px;">🔒 Pagamento seguro &nbsp;·&nbsp; 🔄 7 dias de troca</p>
+  </div>
+</div>
+
+<div class="copy-section">
+  <p class="copy-lead">Com construção reforçada colada e costurada, ele entrega durabilidade superior para o uso diário. Sem abrir, sem rasgar, sem decepcionar.</p>
+  <p class="copy-body">A palmilha ortopédica proporciona máximo conforto e absorção de impacto, ideal para quem passa horas em pé ou em movimento. O solado tratorado antiderrapante garante estabilidade e segurança em diferentes tipos de terreno, enquanto a biqueira de proteção adiciona uma camada extra contra impactos.<br/><br/>Perfeito para o dia a dia, trabalho leve ou uso urbano. Esse tênis combina robustez, conforto e estilo em um único produto.</p>
+  <p class="copy-close">Sinta firmeza, proteção e conforto em cada passo. Garanta já o seu.</p>
+</div>
+
+<div class="benefits">
+  <p class="benefits-title">O que você leva</p>
+  <div class="benefit-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon">🧵</div>
+      <div class="benefit-name">Costurado e Colado</div>
+      <div class="benefit-desc">Construção reforçada que não abre nem rasga com o uso.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🦶</div>
+      <div class="benefit-name">Palmilha Ortopédica</div>
+      <div class="benefit-desc">Absorção de impacto para quem fica horas em pé.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">⚙️</div>
+      <div class="benefit-name">Solado Tratorado</div>
+      <div class="benefit-desc">Antiderrapante em qualquer tipo de terreno.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🛡️</div>
+      <div class="benefit-name">Biqueira de Proteção</div>
+      <div class="benefit-desc">Proteção extra contra impactos no bico do pé.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">💧</div>
+      <div class="benefit-name">Resistente à Água</div>
+      <div class="benefit-desc">Pé seco na chuva, lama ou qualquer situação.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🎯</div>
+      <div class="benefit-name">Uso Versátil</div>
+      <div class="benefit-desc">Trabalho, academia e rua. Um tênis pra tudo.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="proof-section">
+  <div class="proof-header">
+    <p class="proof-title">Quem comprou aprovou</p>
+    <div class="proof-score">
+      <span class="stars">★★★★★</span>
+      <span>4,9/5</span>
+    </div>
+  </div>
+  <div class="review-list">
+    <div class="review">
+      <div class="review-top"><div><div class="rv-name">Marcos Oliveira <span class="rv-verified">✓ verificado</span></div><div class="rv-city">São Paulo, SP</div></div></div>
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Trabalho em obra e já testei vários tênis. O Force One é outro nível. Chego em casa sem dor nenhuma depois de 10 horas no pé. A palmilha faz toda a diferença."</p>
+    </div>
+    <div class="review">
+      <div class="review-top"><div><div class="rv-name">Rafael Costa <span class="rv-verified">✓ verificado</span></div><div class="rv-city">Recife, PE</div></div></div>
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Recebi em 4 dias. O solado é incrível, não escorregou em nenhum momento. Qualidade absurda pelo preço que paguei."</p>
+    </div>
+    <div class="review">
+      <div class="review-top"><div><div class="rv-name">Anderson Lima <span class="rv-verified">✓ verificado</span></div><div class="rv-city">Manaus, AM</div></div></div>
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Aqui chove todo dia. Testei na lama e o pé ficou completamente seco. A biqueira salvou meu pé de um tombo feio. Vale muito a pena."</p>
+    </div>
+    <div class="review">
+      <div class="review-top"><div><div class="rv-name">Carlos Eduardo <span class="rv-verified">✓ verificado</span></div><div class="rv-city">Goiânia, GO</div></div></div>
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Comprei desconfiado pelo preço baixo, mas o tênis chegou impecável. Costura firme, solado robusto. Já indiquei pra minha equipe toda."</p>
+    </div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <p class="faq-title">Dúvidas Frequentes</p>
+  <div class="faq-list">
+    <div class="faq">
+      <button class="faq-q">Como escolho o tamanho certo? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">Segue o tamanho padrão brasileiro. Em dúvida entre dois números, escolha o maior para maior conforto.</div>
+    </div>
+    <div class="faq">
+      <button class="faq-q">Quanto tempo leva para chegar? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">Enviamos em até 2 dias úteis. Sul e Sudeste: 3 a 7 dias. Demais regiões: 5 a 12 dias. Você recebe o código de rastreio por e-mail assim que sair.</div>
+    </div>
+    <div class="faq">
+      <button class="faq-q">Posso devolver se não gostar? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">Sim. Você tem 7 dias corridos após o recebimento para solicitar troca ou devolução, sem nenhuma justificativa. 100% do valor devolvido.</div>
+    </div>
+    <div class="faq">
+      <button class="faq-q">O pagamento é seguro? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">Sim. Processado com criptografia de ponta a ponta. Seus dados ficam 100% protegidos em todas as etapas.</div>
+    </div>
+  </div>
+</div>
+
+<div class="final-cta">
+  <p>Não deixe o preço promocional passar. Com durabilidade real, conforto o dia todo e proteção em cada passo, o Force One é o investimento certo nos seus pés.</p>
+  <p style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;">🏪 Vendido e entregue pela <strong style="color:var(--black);">loja oficial</strong></p>
+  <button class="cta-btn" onclick="goToStore()">🛒 Comprar na loja oficial →</button>
+  <p class="cta-sub" style="margin-top:8px;">🔒 Pagamento seguro &nbsp;·&nbsp; 🔄 7 dias de troca</p>
+</div>
+
+<footer>
+  <p>© 2026 Force One. Todos os direitos reservados.</p>
+</footer>
+
+<div class="sticky-cta">
+  <div class="sticky-inner">
+    <div class="sticky-price">
+      <div class="old">De R$ 299,90</div>
+      <div class="cur">R$ 139,90 <span style="font-size:0.65rem;color:var(--green);font-weight:700;">à vista</span></div>
+    </div>
+    <button class="sticky-btn" onclick="goToStore()">🛒 Loja oficial →</button>
+  </div>
+</div>
+
+<script>
+function goToStore() {
+  var parts = ['htt','ps://','www.',atob('bG9qYS1jYXRlcnBpbGxhci5jb20='),atob('L3Byb2R1dG9zL3RlbmlzLWZvcmNlLW9uZQ==')];
+  var url = parts.join('');
+  var sp = new URLSearchParams(window.location.search);
+  var fbclid = sp.get('fbclid');
+  var fbp = '';
+  try { document.cookie.split(';').forEach(function(c){ if(c.trim().startsWith('_fbp=')) fbp = c.trim().substring(5); }); } catch(e){}
+  var qs = new URLSearchParams();
+  if (fbclid) qs.set('fbclid', fbclid);
+  if (fbp) qs.set('fbp', fbp);
+  var q = qs.toString();
+  window.open(url + (q ? '?' + q : ''), '_blank', 'noopener');
+}
+
+
+function setImg(el, src) {
+  document.getElementById('mainImg').src = src;
+  document.querySelectorAll('.thumb').forEach(function(t){ t.classList.remove('active'); });
+  el.classList.add('active');
+}
+
+document.querySelectorAll('.faq-q').forEach(function(b){
+  b.addEventListener('click', function(){
+    var item = b.closest('.faq'), open = item.classList.contains('open');
+    document.querySelectorAll('.faq').forEach(function(i){ i.classList.remove('open'); });
+    if(!open) item.classList.add('open');
+  });
+});
+</script>
 </body>
 </html>
