@@ -3,228 +3,322 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Force One — Tênis de Alta Performance</title>
-  <meta name="description" content="Construção reforçada, palmilha ortopédica e solado tratorado. Conheça o Force One." />
+  <title>Force One — Demonstração Oficial do Produto</title>
+  <meta name="description" content="Conheça o Force One. Resistência real, conforto superior. Disponível na loja oficial." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
   <script defer src="/_vercel/insights/script.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --yellow: #FFCD11;
       --black: #0a0a0a;
-      --gray: #555;
-      --light: #f5f5f5;
-      --border: #e8e8e8;
-      --muted: #999;
+      --white: #ffffff;
+      --gray: #444;
+      --muted: #888;
+      --border: #1a1a1a;
       --green: #16c789;
+      --surface: #111;
     }
+    html { scroll-behavior: smooth; }
     body {
-      background: #fff;
-      color: var(--black);
+      background: var(--black);
+      color: var(--white);
       font-family: 'Inter', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
       padding-bottom: 80px;
+    }
+
+    /* DEMO NOTICE */
+    .demo-bar {
+      background: var(--yellow);
+      text-align: center;
+      padding: 9px 16px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--black);
+      letter-spacing: 0.5px;
     }
 
     /* HEADER */
     .header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 16px 20px;
+      justify-content: center;
+      padding: 20px;
       border-bottom: 1px solid var(--border);
-      background: #fff;
     }
     .brand {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 900;
-      letter-spacing: 2px;
+      letter-spacing: 4px;
       text-transform: uppercase;
+      color: var(--white);
     }
     .brand span { color: var(--yellow); }
 
-    /* GALLERY */
-    .gallery { background: var(--light); }
+    /* HERO IMAGE */
+    .hero-img {
+      position: relative;
+      background: #0f0f0f;
+    }
     .main-img {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
       display: block;
+      opacity: 0.95;
+    }
+    .hero-label {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--yellow);
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
     .thumbs {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       padding: 10px 16px;
       overflow-x: auto;
       scrollbar-width: none;
-      background: #fff;
+      background: #0f0f0f;
+      border-bottom: 1px solid var(--border);
     }
     .thumbs::-webkit-scrollbar { display: none; }
     .thumb {
-      width: 58px; height: 58px;
+      width: 54px; height: 54px;
       border-radius: 6px;
-      border: 2px solid var(--border);
+      border: 1.5px solid #222;
       overflow: hidden;
       flex-shrink: 0;
       cursor: pointer;
-      background: var(--light);
+      opacity: 0.6;
+      transition: opacity .15s, border-color .15s;
     }
-    .thumb.active { border-color: var(--black); }
+    .thumb.active { border-color: var(--yellow); opacity: 1; }
     .thumb img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* PRODUCT INFO */
-    .product-info {
-      padding: 20px 20px 0;
-    }
-    .product-tag {
-      font-size: 0.65rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-    .product-name {
-      font-size: 1.6rem;
-      font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 10px;
-    }
-    .product-desc {
-      font-size: 0.88rem;
-      color: var(--gray);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-    .stars-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-    .stars { color: var(--yellow); font-size: 0.85rem; letter-spacing: 1px; }
-    .stars-label { font-size: 0.75rem; color: var(--muted); }
-
-    /* SPECS */
-    .specs {
-      padding: 0 20px 24px;
-    }
-    .specs-title {
-      font-size: 0.65rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-    .spec-list { display: flex; flex-direction: column; gap: 0; }
-    .spec-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 13px 0;
+    /* INTRO */
+    .intro {
+      padding: 28px 20px 24px;
       border-bottom: 1px solid var(--border);
     }
-    .spec-item:first-child { border-top: 1px solid var(--border); }
-    .spec-icon { font-size: 1.1rem; width: 24px; text-align: center; flex-shrink: 0; }
-    .spec-info {}
-    .spec-name { font-size: 0.82rem; font-weight: 700; color: var(--black); }
-    .spec-desc { font-size: 0.73rem; color: var(--muted); margin-top: 1px; }
-
-    /* HIGHLIGHTS */
-    .highlights {
-      background: var(--black);
-      padding: 28px 20px;
-      margin: 0;
-    }
-    .hl-title {
-      font-size: 0.65rem;
-      font-weight: 900;
+    .intro-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #666;
-      margin-bottom: 16px;
+      letter-spacing: 2.5px;
+      color: var(--yellow);
+      margin-bottom: 12px;
     }
-    .hl-grid {
+    .intro-title {
+      font-size: 1.9rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .intro-title em {
+      font-style: italic;
+      color: var(--yellow);
+    }
+    .intro-text {
+      font-size: 0.88rem;
+      color: #aaa;
+      line-height: 1.75;
+    }
+
+    /* SOCIAL PROOF — NUMBERS */
+    .numbers {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: #222;
+      border-bottom: 1px solid var(--border);
     }
-    .hl-item {
-      background: var(--black);
-      padding: 18px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .num-item {
+      padding: 22px 20px;
+      border-right: 1px solid var(--border);
     }
-    .hl-num {
-      font-size: 1.6rem;
+    .num-item:nth-child(2), .num-item:nth-child(4) { border-right: none; }
+    .num-item:nth-child(3), .num-item:nth-child(4) { border-top: 1px solid var(--border); }
+    .num-val {
+      font-size: 2rem;
       font-weight: 900;
       color: var(--yellow);
       line-height: 1;
+      margin-bottom: 4px;
     }
-    .hl-label { font-size: 0.72rem; color: #aaa; line-height: 1.4; }
+    .num-label { font-size: 0.7rem; color: #666; line-height: 1.4; }
 
-    /* DETAILS */
-    .details {
+    /* FEATURES */
+    .features {
       padding: 28px 20px;
-      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
-    .details-title {
-      font-size: 0.65rem;
+    .section-title {
+      font-size: 0.62rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .feat-list { display: flex; flex-direction: column; gap: 0; }
+    .feat-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .feat-item:last-child { border-bottom: none; }
+    .feat-icon {
+      width: 38px; height: 38px;
+      background: #151515;
+      border: 1px solid #222;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .feat-body {}
+    .feat-name { font-size: 0.85rem; font-weight: 700; margin-bottom: 3px; }
+    .feat-desc { font-size: 0.75rem; color: #666; line-height: 1.5; }
+
+    /* REVIEWS */
+    .reviews {
+      padding: 28px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .review-score {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .score-num {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+    .score-detail {}
+    .score-stars { color: var(--yellow); font-size: 1rem; letter-spacing: 2px; }
+    .score-count { font-size: 0.72rem; color: #555; margin-top: 3px; }
+
+    .review-list { display: flex; flex-direction: column; gap: 0; }
+    .review {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .review:last-child { border-bottom: none; }
+    .review-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .av {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1.5px solid #222;
+      color: var(--yellow);
+      font-weight: 900;
+      font-size: 0.8rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .rv-info {}
+    .rv-name { font-size: 0.82rem; font-weight: 700; }
+    .rv-meta { font-size: 0.65rem; color: #555; display: flex; align-items: center; gap: 6px; margin-top: 1px; }
+    .rv-verified { color: var(--green); font-weight: 700; }
+    .rv-stars { color: var(--yellow); font-size: 0.72rem; margin-bottom: 6px; }
+    .rv-text { font-size: 0.82rem; color: #aaa; line-height: 1.65; }
+
+    /* DEMO NOTICE BOX */
+    .demo-box {
+      margin: 0;
+      padding: 24px 20px;
+      background: #0d0d0d;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .demo-box-title {
+      font-size: 0.72rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: var(--muted);
-      margin-bottom: 16px;
+      color: #555;
+      margin-bottom: 10px;
     }
-    .detail-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 11px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.82rem;
+    .demo-box-text {
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.7;
     }
-    .detail-row:first-of-type { border-top: 1px solid var(--border); }
-    .detail-key { color: var(--muted); }
-    .detail-val { font-weight: 600; color: var(--black); }
+    .demo-box-text strong { color: var(--white); }
 
     /* CTA */
     .cta-section {
-      padding: 24px 20px;
-      border-top: 1px solid var(--border);
+      padding: 28px 20px;
+    }
+    .cta-headline {
+      font-size: 1.25rem;
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+    .cta-sub {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
     .cta-btn {
       display: block;
       width: 100%;
-      background: var(--black);
-      color: #fff;
+      background: var(--yellow);
+      color: var(--black);
       text-align: center;
-      font-size: 0.95rem;
-      font-weight: 800;
-      padding: 16px;
+      font-size: 1rem;
+      font-weight: 900;
+      padding: 17px;
       border-radius: 10px;
       border: none;
       cursor: pointer;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       font-family: inherit;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
-    .cta-note {
-      text-align: center;
+    .cta-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
       font-size: 0.68rem;
-      color: var(--muted);
+      color: #555;
+    }
+    .cta-trust span { display: flex; align-items: center; gap: 4px; }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 0.62rem;
+      color: #333;
+      border-top: 1px solid var(--border);
     }
 
     /* STICKY */
     .sticky {
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      background: #fff;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
       border-top: 1px solid var(--border);
       padding: 10px 16px 16px;
       z-index: 100;
@@ -247,13 +341,15 @@
 </head>
 <body>
 
+<div class="demo-bar">📋 Página de demonstração oficial — compre na loja clicando no botão abaixo</div>
+
 <header class="header">
   <div class="brand">FORCE<span>ONE</span></div>
-  <span style="font-size:0.7rem;color:var(--muted);font-weight:600;">Alta Performance</span>
 </header>
 
-<div class="gallery">
+<div class="hero-img">
   <img id="mainImg" class="main-img" src="imgs/img1.webp" alt="Tênis Force One" />
+  <div class="hero-label">⚡ Alta Performance</div>
 </div>
 <div class="thumbs">
   <div class="thumb active" onclick="setImg(this,'imgs/img1.webp')"><img src="imgs/img1.webp" alt="" /></div>
@@ -262,102 +358,152 @@
   <div class="thumb" onclick="setImg(this,'imgs/img-intruder-mecha.jpg')"><img src="imgs/img-intruder-mecha.jpg" alt="" /></div>
 </div>
 
-<div class="product-info">
-  <p class="product-tag">Tênis de Performance</p>
-  <h1 class="product-name">Force One</h1>
-  <div class="stars-row">
-    <span class="stars">★★★★★</span>
-    <span class="stars-label">4,9 · 2.400+ avaliações</span>
+<div class="intro">
+  <span class="intro-tag">Tênis de Performance</span>
+  <h1 class="intro-title">Feito pra quem<br/><em>não para.</em></h1>
+  <p class="intro-text">O Force One foi desenvolvido para quem exige resistência real e conforto duradouro. Construção reforçada, palmilha ortopédica de alta absorção e solado tratorado antiderrapante — tudo em um único tênis.</p>
+</div>
+
+<div class="numbers">
+  <div class="num-item">
+    <div class="num-val">4,9</div>
+    <div class="num-label">avaliação média dos clientes</div>
   </div>
-  <p class="product-desc">
-    Desenvolvido para quem exige mais do calçado no dia a dia. Construção reforçada com costura e colagem dupla, palmilha ortopédica de alta absorção e solado tratorado antiderrapante.
+  <div class="num-item">
+    <div class="num-val">2.4k</div>
+    <div class="num-label">pedidos entregues</div>
+  </div>
+  <div class="num-item">
+    <div class="num-val">10h</div>
+    <div class="num-label">de conforto contínuo</div>
+  </div>
+  <div class="num-item">
+    <div class="num-val">2x</div>
+    <div class="num-label">mais durável que o comum</div>
+  </div>
+</div>
+
+<div class="features">
+  <p class="section-title">Tecnologia do produto</p>
+  <div class="feat-list">
+    <div class="feat-item">
+      <div class="feat-icon">🧵</div>
+      <div class="feat-body">
+        <div class="feat-name">Costurado e Colado</div>
+        <div class="feat-desc">Dupla fixação garante que o solado nunca abra, mesmo com uso intenso diário.</div>
+      </div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">🦶</div>
+      <div class="feat-body">
+        <div class="feat-name">Palmilha Ortopédica</div>
+        <div class="feat-desc">Alta absorção de impacto. Ideal para quem passa horas em pé ou em movimento.</div>
+      </div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">⚙️</div>
+      <div class="feat-body">
+        <div class="feat-name">Solado Tratorado</div>
+        <div class="feat-desc">Tração e estabilidade em qualquer superfície — asfalto, terra ou piso molhado.</div>
+      </div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">🛡️</div>
+      <div class="feat-body">
+        <div class="feat-name">Biqueira Reforçada</div>
+        <div class="feat-desc">Proteção extra na ponta contra impactos e quedas acidentais.</div>
+      </div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">💧</div>
+      <div class="feat-body">
+        <div class="feat-name">Resistência à Umidade</div>
+        <div class="feat-desc">Material tratado que mantém o pé seco mesmo na chuva ou lama.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="reviews">
+  <p class="section-title">O que dizem os clientes</p>
+  <div class="review-score">
+    <div class="score-num">4,9</div>
+    <div class="score-detail">
+      <div class="score-stars">★★★★★</div>
+      <div class="score-count">Baseado em 2.400+ avaliações verificadas</div>
+    </div>
+  </div>
+  <div class="review-list">
+    <div class="review">
+      <div class="review-header">
+        <div class="av">MO</div>
+        <div class="rv-info">
+          <div class="rv-name">Marcos Oliveira</div>
+          <div class="rv-meta"><span>São Paulo, SP</span><span class="rv-verified">✓ compra verificada</span></div>
+        </div>
+      </div>
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Trabalho em obra e já testei vários tênis. O Force One é outro nível. Chego em casa sem dor nenhuma depois de 10 horas no pé. A palmilha faz toda a diferença."</p>
+    </div>
+    <div class="review">
+      <div class="review-header">
+        <div class="av">RC</div>
+        <div class="rv-info">
+          <div class="rv-name">Rafael Costa</div>
+          <div class="rv-meta"><span>Recife, PE</span><span class="rv-verified">✓ compra verificada</span></div>
+        </div>
+      </div>
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Recebi em 4 dias. O solado é incrível, não escorregou em nenhum momento. Qualidade absurda. Já comprei o segundo par."</p>
+    </div>
+    <div class="review">
+      <div class="review-header">
+        <div class="av">AL</div>
+        <div class="rv-info">
+          <div class="rv-name">Anderson Lima</div>
+          <div class="rv-meta"><span>Manaus, AM</span><span class="rv-verified">✓ compra verificada</span></div>
+        </div>
+      </div>
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Aqui chove todo dia. Testei na lama e o pé ficou completamente seco. A biqueira salvou meu pé de um tombo feio. Vale muito a pena."</p>
+    </div>
+    <div class="review">
+      <div class="review-header">
+        <div class="av">CE</div>
+        <div class="rv-info">
+          <div class="rv-name">Carlos Eduardo</div>
+          <div class="rv-meta"><span>Goiânia, GO</span><span class="rv-verified">✓ compra verificada</span></div>
+        </div>
+      </div>
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Comprei desconfiado pelo preço, mas chegou impecável. Costura firme, solado robusto. Indiquei pra toda a minha equipe."</p>
+    </div>
+  </div>
+</div>
+
+<div class="demo-box">
+  <p class="demo-box-title">Sobre esta página</p>
+  <p class="demo-box-text">
+    Esta é a <strong>página oficial de demonstração</strong> do tênis Force One. Aqui você conhece o produto em detalhes — tecnologia, materiais e avaliações reais de quem já comprou.<br/><br/>
+    Para <strong>ver o preço e finalizar sua compra</strong>, acesse a loja oficial clicando no botão abaixo.
   </p>
 </div>
 
-<div class="specs">
-  <p class="specs-title">Tecnologia e Construção</p>
-  <div class="spec-list">
-    <div class="spec-item">
-      <div class="spec-icon">🧵</div>
-      <div class="spec-info">
-        <div class="spec-name">Costurado e Colado</div>
-        <div class="spec-desc">Dupla fixação para máxima durabilidade</div>
-      </div>
-    </div>
-    <div class="spec-item">
-      <div class="spec-icon">🦶</div>
-      <div class="spec-info">
-        <div class="spec-name">Palmilha Ortopédica</div>
-        <div class="spec-desc">Absorção de impacto em uso prolongado</div>
-      </div>
-    </div>
-    <div class="spec-item">
-      <div class="spec-icon">⚙️</div>
-      <div class="spec-info">
-        <div class="spec-name">Solado Tratorado</div>
-        <div class="spec-desc">Tração e estabilidade em qualquer terreno</div>
-      </div>
-    </div>
-    <div class="spec-item">
-      <div class="spec-icon">🛡️</div>
-      <div class="spec-info">
-        <div class="spec-name">Biqueira Reforçada</div>
-        <div class="spec-desc">Proteção extra contra impactos frontais</div>
-      </div>
-    </div>
-    <div class="spec-item">
-      <div class="spec-icon">💧</div>
-      <div class="spec-info">
-        <div class="spec-name">Resistência à Umidade</div>
-        <div class="spec-desc">Material tratado para uso em condições adversas</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="highlights">
-  <p class="hl-title">Desempenho em números</p>
-  <div class="hl-grid">
-    <div class="hl-item">
-      <div class="hl-num">2x</div>
-      <div class="hl-label">mais durável que tênis comum</div>
-    </div>
-    <div class="hl-item">
-      <div class="hl-num">10h</div>
-      <div class="hl-label">de conforto contínuo testado</div>
-    </div>
-    <div class="hl-item">
-      <div class="hl-num">4,9</div>
-      <div class="hl-label">avaliação média dos clientes</div>
-    </div>
-    <div class="hl-item">
-      <div class="hl-num">2.4k</div>
-      <div class="hl-label">pedidos entregues</div>
-    </div>
-  </div>
-</div>
-
-<div class="details">
-  <p class="details-title">Especificações</p>
-  <div class="detail-row"><span class="detail-key">Modelo</span><span class="detail-val">Force One</span></div>
-  <div class="detail-row"><span class="detail-key">Numeração</span><span class="detail-val">38 ao 44</span></div>
-  <div class="detail-row"><span class="detail-key">Cores</span><span class="detail-val">Preto, Cinza, Amarelo</span></div>
-  <div class="detail-row"><span class="detail-key">Solado</span><span class="detail-val">Borracha tratorada</span></div>
-  <div class="detail-row"><span class="detail-key">Cabedal</span><span class="detail-val">Sintético reforçado</span></div>
-  <div class="detail-row"><span class="detail-key">Entrega</span><span class="detail-val">Para todo o Brasil</span></div>
-</div>
-
 <div class="cta-section">
-  <button class="cta-btn" onclick="goToStore()">Ver produto na loja →</button>
-  <p class="cta-note">🔒 Compra segura &nbsp;·&nbsp; 7 dias para troca</p>
+  <h2 class="cta-headline">Pronto para garantir o seu?</h2>
+  <p class="cta-sub">Acesse a loja oficial para ver o preço, escolher o tamanho e finalizar o pedido com segurança.</p>
+  <button class="cta-btn" onclick="goToStore()">Acessar a loja oficial →</button>
+  <div class="cta-trust">
+    <span>🔒 Compra segura</span>
+    <span>🔄 7 dias de troca</span>
+    <span>🚚 Frete grátis</span>
+  </div>
 </div>
 
-<footer style="padding:16px 20px;border-top:1px solid var(--border);text-align:center;font-size:0.62rem;color:var(--muted);">
-  © 2026 Force One. Todos os direitos reservados.
-</footer>
+<footer>© 2026 Force One. Todos os direitos reservados. Esta é uma página de demonstração do produto.</footer>
 
 <div class="sticky">
-  <button class="sticky-btn" onclick="goToStore()">Ver produto na loja →</button>
+  <button class="sticky-btn" onclick="goToStore()">Acessar a loja oficial →</button>
 </div>
 
 <script>
