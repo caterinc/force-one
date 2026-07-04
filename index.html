@@ -266,6 +266,45 @@
     }
     .demo-box-text strong { color: var(--black); }
 
+    /* TRUST PILLARS */
+    .trust-pillars {
+      padding: 28px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .pillar-list { display: flex; flex-direction: column; gap: 0; }
+    .pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pillar:last-child { border-bottom: none; }
+    .pillar-icon {
+      width: 40px; height: 40px;
+      background: var(--surface);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .pillar-body {}
+    .pillar-name { font-size: 0.85rem; font-weight: 800; color: var(--black); margin-bottom: 2px; }
+    .pillar-desc { font-size: 0.73rem; color: var(--muted); line-height: 1.5; }
+
+    /* GUARANTEE */
+    .guarantee {
+      margin: 0;
+      padding: 24px 20px;
+      background: #f0fdf4;
+      border-top: 1.5px solid #bbf7d0;
+      border-bottom: 1.5px solid #bbf7d0;
+    }
+    .guarantee-inner { display: flex; align-items: flex-start; gap: 14px; }
+    .guarantee-icon { font-size: 2rem; flex-shrink: 0; }
+    .guarantee-title { font-size: 0.9rem; font-weight: 900; color: #14532d; margin-bottom: 4px; }
+    .guarantee-text { font-size: 0.78rem; color: #166534; line-height: 1.6; }
+
     /* CTA */
     .cta-section {
       padding: 28px 20px;
@@ -480,6 +519,50 @@
   </div>
 </div>
 
+<div class="trust-pillars">
+  <p class="section-title">Por que confiar</p>
+  <div class="pillar-list">
+    <div class="pillar">
+      <div class="pillar-icon">🔒</div>
+      <div class="pillar-body">
+        <div class="pillar-name">Pagamento 100% seguro</div>
+        <div class="pillar-desc">Seus dados são criptografados e protegidos em todas as etapas da compra.</div>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">📦</div>
+      <div class="pillar-body">
+        <div class="pillar-name">Entrega para todo o Brasil</div>
+        <div class="pillar-desc">Enviamos em até 2 dias úteis. Você recebe o código de rastreio por e-mail assim que sair.</div>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🏆</div>
+      <div class="pillar-body">
+        <div class="pillar-name">Mais de 2.400 clientes satisfeitos</div>
+        <div class="pillar-desc">Avaliação média de 4,9 estrelas com compras verificadas em todo o país.</div>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">💬</div>
+      <div class="pillar-body">
+        <div class="pillar-name">Atendimento pelo WhatsApp</div>
+        <div class="pillar-desc">Suporte humano disponível para dúvidas sobre pedido, tamanho e entrega.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="guarantee">
+  <div class="guarantee-inner">
+    <div class="guarantee-icon">🛡️</div>
+    <div>
+      <div class="guarantee-title">Garantia de 7 dias</div>
+      <div class="guarantee-text">Não gostou? Recebeu diferente do esperado? Devolvemos 100% do valor pago, sem perguntas. É o seu direito e a nossa responsabilidade.</div>
+    </div>
+  </div>
+</div>
+
 <div class="demo-box">
   <p class="demo-box-title">Sobre esta página</p>
   <p class="demo-box-text">
@@ -494,8 +577,16 @@
   <button class="cta-btn" onclick="goToStore()">Acessar a loja oficial →</button>
   <div class="cta-trust">
     <span>🔒 Compra segura</span>
-    <span>🔄 7 dias de troca</span>
+    <span>🔄 7 dias para trocar</span>
     <span>🚚 Frete grátis</span>
+  </div>
+  <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);text-align:center;">
+    <p style="font-size:0.65rem;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Formas de pagamento aceitas</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
+      <span style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:5px 10px;font-size:0.72rem;font-weight:700;color:var(--black);">PIX</span>
+      <span style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:5px 10px;font-size:0.72rem;font-weight:700;color:var(--black);">Cartão de Crédito</span>
+      <span style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:5px 10px;font-size:0.72rem;font-weight:700;color:var(--black);">Débito</span>
+    </div>
   </div>
 </div>
 
