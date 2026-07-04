@@ -66,13 +66,19 @@
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      aspect-ratio: 1 / 1;
     }
     .main-img {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      aspect-ratio: 1 / 1;
+      height: 100%;
       object-fit: cover;
       display: block;
+      opacity: 0;
+      transition: opacity 0.35s ease;
     }
+    .main-img.active { opacity: 1; }
     .hero-label {
       position: absolute;
       bottom: 14px;
@@ -402,14 +408,17 @@
 </header>
 
 <div class="hero-img">
-  <img id="mainImg" class="main-img" src="imgs/img1.webp" alt="Tênis Force One" />
+  <img class="main-img active" data-key="img1" src="imgs/img1.webp" alt="Force One — Preto" />
+  <img class="main-img" data-key="img2" src="imgs/img-cinza.webp" alt="Force One — Cinza" />
+  <img class="main-img" data-key="img3" src="imgs/img5.webp" alt="Force One — Amarelo" />
+  <img class="main-img" data-key="img4" src="imgs/img-intruder-mecha.jpg" alt="Force One — Mecha" />
   <div class="hero-label">⚡ Alta Performance</div>
 </div>
 <div class="thumbs">
-  <div class="thumb active" onclick="setImg(this,'imgs/img1.webp')"><img src="imgs/img1.webp" alt="" /></div>
-  <div class="thumb" onclick="setImg(this,'imgs/img-cinza.webp')"><img src="imgs/img-cinza.webp" alt="" /></div>
-  <div class="thumb" onclick="setImg(this,'imgs/img5.webp')"><img src="imgs/img5.webp" alt="" /></div>
-  <div class="thumb" onclick="setImg(this,'imgs/img-intruder-mecha.jpg')"><img src="imgs/img-intruder-mecha.jpg" alt="" /></div>
+  <div class="thumb active" onclick="setImg(this,'img1')"><img src="imgs/img1.webp" alt="" /></div>
+  <div class="thumb" onclick="setImg(this,'img2')"><img src="imgs/img-cinza.webp" alt="" /></div>
+  <div class="thumb" onclick="setImg(this,'img3')"><img src="imgs/img5.webp" alt="" /></div>
+  <div class="thumb" onclick="setImg(this,'img4')"><img src="imgs/img-intruder-mecha.jpg" alt="" /></div>
 </div>
 
 <div class="intro">
@@ -627,8 +636,9 @@ function goToStore() {
   window.open(url + (q ? '?' + q : ''), '_blank', 'noopener');
 }
 
-function setImg(el, src) {
-  document.getElementById('mainImg').src = src;
+function setImg(el, key) {
+  document.querySelectorAll('.main-img').forEach(function(img){ img.classList.remove('active'); });
+  document.querySelector('.main-img[data-key="' + key + '"]').classList.add('active');
   document.querySelectorAll('.thumb').forEach(function(t){ t.classList.remove('active'); });
   el.classList.add('active');
 }
