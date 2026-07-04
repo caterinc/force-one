@@ -17,14 +17,14 @@
       --white: #ffffff;
       --gray: #444;
       --muted: #888;
-      --border: #1a1a1a;
+      --border: #e8e8e8;
       --green: #16c789;
-      --surface: #111;
+      --surface: #f5f5f5;
     }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--black);
-      color: var(--white);
+      background: var(--white);
+      color: var(--black);
       font-family: 'Inter', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
       padding-bottom: 80px;
@@ -54,14 +54,14 @@
       font-weight: 900;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--white);
+      color: var(--black);
     }
     .brand span { color: var(--yellow); }
 
     /* HERO IMAGE */
     .hero-img {
       position: relative;
-      background: #0f0f0f;
+      background: var(--surface);
     }
     .main-img {
       width: 100%;
@@ -91,7 +91,7 @@
       padding: 10px 16px;
       overflow-x: auto;
       scrollbar-width: none;
-      background: #0f0f0f;
+      background: var(--white);
       border-bottom: 1px solid var(--border);
     }
     .thumbs::-webkit-scrollbar { display: none; }
@@ -119,7 +119,7 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 2.5px;
-      color: var(--yellow);
+      color: var(--muted);
       margin-bottom: 12px;
     }
     .intro-title {
@@ -130,11 +130,14 @@
     }
     .intro-title em {
       font-style: italic;
-      color: var(--yellow);
+      color: var(--black);
+      text-decoration: underline;
+      text-decoration-color: var(--yellow);
+      text-underline-offset: 4px;
     }
     .intro-text {
       font-size: 0.88rem;
-      color: #aaa;
+      color: var(--gray);
       line-height: 1.75;
     }
 
@@ -153,11 +156,11 @@
     .num-val {
       font-size: 2rem;
       font-weight: 900;
-      color: var(--yellow);
+      color: var(--black);
       line-height: 1;
       margin-bottom: 4px;
     }
-    .num-label { font-size: 0.7rem; color: #666; line-height: 1.4; }
+    .num-label { font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
 
     /* FEATURES */
     .features {
@@ -183,16 +186,16 @@
     .feat-item:last-child { border-bottom: none; }
     .feat-icon {
       width: 38px; height: 38px;
-      background: #151515;
-      border: 1px solid #222;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
       font-size: 1rem;
       flex-shrink: 0;
     }
     .feat-body {}
-    .feat-name { font-size: 0.85rem; font-weight: 700; margin-bottom: 3px; }
-    .feat-desc { font-size: 0.75rem; color: #666; line-height: 1.5; }
+    .feat-name { font-size: 0.85rem; font-weight: 700; margin-bottom: 3px; color: var(--black); }
+    .feat-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
 
     /* REVIEWS */
     .reviews {
@@ -208,12 +211,12 @@
     .score-num {
       font-size: 3rem;
       font-weight: 900;
-      color: var(--white);
+      color: var(--black);
       line-height: 1;
     }
     .score-detail {}
     .score-stars { color: var(--yellow); font-size: 1rem; letter-spacing: 2px; }
-    .score-count { font-size: 0.72rem; color: #555; margin-top: 3px; }
+    .score-count { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
 
     .review-list { display: flex; flex-direction: column; gap: 0; }
     .review {
@@ -225,8 +228,8 @@
     .av {
       width: 36px; height: 36px;
       border-radius: 50%;
-      background: var(--surface);
-      border: 1.5px solid #222;
+      background: var(--black);
+      border: 1.5px solid var(--border);
       color: var(--yellow);
       font-weight: 900;
       font-size: 0.8rem;
@@ -234,17 +237,17 @@
       flex-shrink: 0;
     }
     .rv-info {}
-    .rv-name { font-size: 0.82rem; font-weight: 700; }
-    .rv-meta { font-size: 0.65rem; color: #555; display: flex; align-items: center; gap: 6px; margin-top: 1px; }
+    .rv-name { font-size: 0.82rem; font-weight: 700; color: var(--black); }
+    .rv-meta { font-size: 0.65rem; color: var(--muted); display: flex; align-items: center; gap: 6px; margin-top: 1px; }
     .rv-verified { color: var(--green); font-weight: 700; }
     .rv-stars { color: var(--yellow); font-size: 0.72rem; margin-bottom: 6px; }
-    .rv-text { font-size: 0.82rem; color: #aaa; line-height: 1.65; }
+    .rv-text { font-size: 0.82rem; color: var(--gray); line-height: 1.65; }
 
     /* DEMO NOTICE BOX */
     .demo-box {
       margin: 0;
       padding: 24px 20px;
-      background: #0d0d0d;
+      background: #fafafa;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
@@ -253,15 +256,15 @@
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: #555;
+      color: var(--muted);
       margin-bottom: 10px;
     }
     .demo-box-text {
       font-size: 0.85rem;
-      color: #888;
+      color: var(--gray);
       line-height: 1.7;
     }
-    .demo-box-text strong { color: var(--white); }
+    .demo-box-text strong { color: var(--black); }
 
     /* CTA */
     .cta-section {
@@ -301,7 +304,7 @@
       justify-content: center;
       gap: 16px;
       font-size: 0.68rem;
-      color: #555;
+      color: var(--muted);
     }
     .cta-trust span { display: flex; align-items: center; gap: 4px; }
 
@@ -317,7 +320,7 @@
     .sticky {
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      background: rgba(10,10,10,0.95);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
       border-top: 1px solid var(--border);
       padding: 10px 16px 16px;
@@ -341,7 +344,7 @@
 </head>
 <body>
 
-<div class="demo-bar">📋 Página de demonstração oficial — compre na loja clicando no botão abaixo</div>
+<div class="demo-bar">Esta é a página de demonstração do produto. Para comprar, acesse a loja oficial clicando no botão abaixo.</div>
 
 <header class="header">
   <div class="brand">FORCE<span>ONE</span></div>
