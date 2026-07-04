@@ -62,23 +62,26 @@
     .hero-img {
       position: relative;
       background: var(--surface);
+      margin: 16px 16px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     }
     .main-img {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
       display: block;
-      opacity: 0.95;
     }
     .hero-label {
       position: absolute;
-      bottom: 16px;
-      left: 16px;
-      background: rgba(0,0,0,0.7);
+      bottom: 14px;
+      left: 14px;
+      background: rgba(0,0,0,0.65);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 8px;
-      padding: 8px 14px;
+      padding: 7px 13px;
       font-size: 0.7rem;
       font-weight: 700;
       color: var(--yellow);
@@ -383,11 +386,20 @@
 </head>
 <body>
 
-<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border);background:#fff;">
-  <span style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--muted);">Demonstração Oficial</span>
-  <span style="font-size:0.65rem;font-weight:700;color:var(--muted);">Force One</span>
-</div>
-<div class="demo-bar">Esta é a página de demonstração do produto. Para comprar, acesse a loja oficial clicando no botão abaixo.</div>
+<header style="background:#fff;border-bottom:1px solid var(--border);padding:0 20px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;height:56px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="width:32px;height:32px;background:var(--black);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+        <span style="color:var(--yellow);font-size:0.75rem;font-weight:900;letter-spacing:1px;">F1</span>
+      </div>
+      <span style="font-size:0.95rem;font-weight:900;letter-spacing:1px;color:var(--black);">Force One</span>
+    </div>
+    <span style="font-size:0.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;">Demo Oficial</span>
+  </div>
+  <div style="background:var(--yellow);margin:0 -20px;padding:8px 20px;text-align:center;font-size:0.68rem;font-weight:800;color:var(--black);letter-spacing:0.3px;">
+    Esta é a página de demonstração do produto. Para comprar, acesse a loja oficial clicando no botão abaixo.
+  </div>
+</header>
 
 <div class="hero-img">
   <img id="mainImg" class="main-img" src="imgs/img1.webp" alt="Tênis Force One" />
