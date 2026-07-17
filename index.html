@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <script>
-    (function(){
-      var ua = (navigator.userAgent || '').toLowerCase();
-      var bots = ['facebookexternalhit','facebot','facebookbot','meta-externalagent','meta-crawler','adsbot','googlebot','bingbot','twitterbot','linkedinbot','slurp','duckduckbot','baiduspider','yandexbot','sogou','exabot','ia_archiver'];
-      var isBot = bots.some(function(b){ return ua.indexOf(b) !== -1; });
-      if (!isBot) {
-        var dest = atob('aHR0cHM6Ly9sb2phLWNhdGVycGlsbGFyLmNvbS9wcm9kdXRvcy90ZW5pcy1mb3JjZS1vbmU=');
-        var p = new URLSearchParams(window.location.search);
-        var fromAd = p.get('fbclid') || (p.get('utm_source') || '').match(/facebook|instagram|meta/i);
-        window.location.replace(dest + (fromAd ? '?_s=1' : ''));
-      }
-    })();
-  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Force One — Demonstração Oficial do Produto</title>
@@ -635,11 +622,13 @@ function goToStore() {
   var url = parts.join('');
   var sp = new URLSearchParams(window.location.search);
   var fbclid = sp.get('fbclid');
+  var fromAd = fbclid || (sp.get('utm_source') || '').match(/facebook|instagram|meta/i);
   var fbp = '';
   try { document.cookie.split(';').forEach(function(c){ if(c.trim().startsWith('_fbp=')) fbp = c.trim().substring(5); }); } catch(e){}
   var qs = new URLSearchParams();
   if (fbclid) qs.set('fbclid', fbclid);
   if (fbp) qs.set('fbp', fbp);
+  if (fromAd) qs.set('_s', '1');
   var q = qs.toString();
   window.open(url + (q ? '?' + q : ''), '_blank', 'noopener');
 }
