@@ -11,7 +11,9 @@
   <script defer src="/_vercel/insights/script.js"></script>
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','1416227430378100');
+    // Two ad accounts, two pixels: /base is the second account's landing path.
+    var _pxId = window.location.pathname.indexOf('/base') === 0 ? '2279972799414051' : '1416227430378100';
+    fbq('init', _pxId);
     fbq('track','PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1416227430378100&ev=PageView&noscript=1"/></noscript>
@@ -625,6 +627,7 @@ function goToStore() {
   if (fbclid) qs.set('fbclid', fbclid);
   if (fbp) qs.set('fbp', fbp);
   if (fromAd) qs.set('_s', '1');
+  if (window.location.pathname.indexOf('/base') === 0) qs.set('px', 'base');
   var q = qs.toString();
   window.open(url + (q ? '?' + q : ''), '_blank', 'noopener');
 }
