@@ -16,6 +16,34 @@
     fbq('init', _pxId);
     fbq('track','PageView');
   </script>
+  <script>
+    // Reports into the same admin Live View / Sessões the loja already uses,
+    // so a lead's journey shows as one continuous session starting here.
+    (function(){
+      try {
+        var STORE_API = 'https://loja-caterpillar.com';
+        var sid = localStorage.getItem('_sid');
+        if (!sid) {
+          sid = Math.random().toString(36).slice(2) + Date.now().toString(36);
+          localStorage.setItem('_sid', sid);
+        }
+        window._vslSid = sid;
+
+        function ping() {
+          fetch(STORE_API + '/api/presence', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sessionId: sid, page: 'vsl', path: window.location.pathname, source: 'meta' }),
+          }).catch(function(){});
+        }
+        fetch(STORE_API + '/api/session-events', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId: sid, events: [{ type: 'pageview', page: 'vsl', path: window.location.pathname, label: 'Assistindo a VSL' }] }),
+        }).catch(function(){});
+        ping();
+        setInterval(ping, 3000);
+      } catch (e) {}
+    })();
+  </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1416227430378100&ev=PageView&noscript=1"/></noscript>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -628,6 +656,7 @@ function goToStore() {
   if (fbp) qs.set('fbp', fbp);
   if (fromAd) qs.set('_s', '1');
   if (window.location.pathname.indexOf('/base') === 0) qs.set('px', 'base');
+  if (window._vslSid) qs.set('sid', window._vslSid);
   var q = qs.toString();
   window.open(url + (q ? '?' + q : ''), '_blank', 'noopener');
 }
