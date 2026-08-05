@@ -57,13 +57,22 @@
       --green: #16c789;
       --surface: #f5f5f5;
     }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      /* Android in-app browsers (Instagram/Facebook) can treat a horizontal
+         swipe on the photo as a page overscroll/back gesture without this,
+         visually kicking the whole page off-screen. */
+      overscroll-behavior-x: none;
+    }
     body {
       background: var(--white);
       color: var(--black);
       font-family: 'Inter', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
       padding-bottom: 80px;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
     }
 
     /* DEMO NOTICE */
@@ -103,6 +112,10 @@
       overflow: hidden;
       box-shadow: 0 4px 24px rgba(0,0,0,0.08);
       aspect-ratio: 1 / 1;
+      /* No swipe gesture is wired up here (only the thumbnails below are
+         clickable) — this stops a stray horizontal drag on the photo from
+         being picked up as a browser-level gesture instead of doing nothing. */
+      touch-action: pan-y;
     }
     .main-img {
       position: absolute;
