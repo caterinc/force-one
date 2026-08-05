@@ -112,11 +112,29 @@
       overflow: hidden;
       box-shadow: 0 4px 24px rgba(0,0,0,0.08);
       aspect-ratio: 1 / 1;
-      /* No swipe gesture is wired up here (only the thumbnails below are
-         clickable) — this stops a stray horizontal drag on the photo from
-         being picked up as a browser-level gesture instead of doing nothing. */
+      /* Drag is handled ourselves (see gallery script) — this stops the
+         browser from also treating the same horizontal drag as its own
+         page-level gesture. */
       touch-action: pan-y;
     }
+    .hero-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      color: #333;
+      font-size: 12px;
+      line-height: 1;
+    }
+    .hero-nav.prev { left: 8px; }
+    .hero-nav.next { right: 8px; }
     .main-img {
       position: absolute;
       inset: 0;
@@ -445,12 +463,14 @@
   Esta é a página de demonstração do produto. Para comprar, acesse a loja oficial clicando no botão abaixo.
 </div>
 
-<div class="hero-img">
+<div class="hero-img" id="heroImg">
   <img class="main-img active" data-key="img1" src="imgs/img1.webp" alt="Force One — Preto" />
   <img class="main-img" data-key="img2" src="imgs/img-cinza.webp" alt="Force One — Cinza" />
   <img class="main-img" data-key="img3" src="imgs/img5.webp" alt="Force One — Amarelo" />
   <img class="main-img" data-key="img4" src="imgs/img-intruder-mecha.jpg" alt="Force One — Mecha" />
   <div class="hero-label">⚡ Alta Performance</div>
+  <div class="hero-nav prev" onclick="stepImg(-1)" aria-label="Foto anterior">‹</div>
+  <div class="hero-nav next" onclick="stepImg(1)" aria-label="Próxima foto">›</div>
 </div>
 <div class="thumbs">
   <div class="thumb active" onclick="setImg(this,'img1')"><img src="imgs/img1.webp" alt="" /></div>
@@ -674,12 +694,50 @@ function goToStore() {
   window.open(url + (q ? '?' + q : ''), '_blank', 'noopener');
 }
 
-function setImg(el, key) {
+var IMG_KEYS = ['img1', 'img2', 'img3', 'img4'];
+
+function showImg(key) {
   document.querySelectorAll('.main-img').forEach(function(img){ img.classList.remove('active'); });
   document.querySelector('.main-img[data-key="' + key + '"]').classList.add('active');
-  document.querySelectorAll('.thumb').forEach(function(t){ t.classList.remove('active'); });
-  el.classList.add('active');
+  document.querySelectorAll('.thumb').forEach(function(t, i){ t.classList.toggle('active', IMG_KEYS[i] === key); });
 }
+
+function setImg(el, key) {
+  showImg(key);
+}
+
+function stepImg(dir) {
+  var current = document.querySelector('.main-img.active').getAttribute('data-key');
+  var idx = IMG_KEYS.indexOf(current);
+  var next = IMG_KEYS[(idx + dir + IMG_KEYS.length) % IMG_KEYS.length];
+  showImg(next);
+}
+
+// Drag/swipe on the hero photo — mirrors the small nav arrows.
+(function(){
+  var hero = document.getElementById('heroImg');
+  if (!hero) return;
+  var startX = null, startY = null, horizontal = false;
+  hero.addEventListener('touchstart', function(e){
+    startX = e.targetTouches[0].clientX;
+    startY = e.targetTouches[0].clientY;
+    horizontal = false;
+  }, { passive: true });
+  hero.addEventListener('touchmove', function(e){
+    if (startX === null) return;
+    var dx = startX - e.targetTouches[0].clientX;
+    var dy = startY - e.targetTouches[0].clientY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) horizontal = true;
+    if (horizontal && e.cancelable) e.preventDefault();
+  }, { passive: false });
+  hero.addEventListener('touchend', function(e){
+    if (startX === null) return;
+    var endX = e.changedTouches[0].clientX;
+    var delta = startX - endX;
+    if (Math.abs(delta) > 40) stepImg(delta > 0 ? 1 : -1);
+    startX = null; startY = null; horizontal = false;
+  });
+})();
 </script>
 </body>
 </html>
