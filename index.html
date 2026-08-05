@@ -691,7 +691,10 @@ function goToStore() {
   if (window.location.pathname.indexOf('/base') === 0) qs.set('px', 'base');
   if (window._vslSid) qs.set('sid', window._vslSid);
   var q = qs.toString();
-  window.open(url + (q ? '?' + q : ''), '_blank', 'noopener');
+  // Same-tab navigation: keeps this one browsing session continuous (VSL then
+  // store) instead of opening a second tab that runs in parallel and fights
+  // over the same session's live presence ping.
+  window.location.href = url + (q ? '?' + q : '');
 }
 
 var IMG_KEYS = ['img1', 'img2', 'img3', 'img4'];
