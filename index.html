@@ -718,7 +718,10 @@ function goToStore() {
   if (fbclid) qs.set('fbclid', fbclid);
   if (fbp) qs.set('fbp', fbp);
   if (fromAd) qs.set('_s', '1');
-  if (window.location.pathname.indexOf('/base') === 0) qs.set('px', 'base');
+  // Always set explicitly (not only for /base) — otherwise a device that
+  // visited /base once keeps localStorage._pxsrc stuck on "base" forever on
+  // the store side, even on a later visit through the main VSL.
+  qs.set('px', window.location.pathname.indexOf('/base') === 0 ? 'base' : 'default');
   if (window._vslSid) qs.set('sid', window._vslSid);
   var q = qs.toString();
   // Same-tab navigation: keeps this one browsing session continuous (VSL then
